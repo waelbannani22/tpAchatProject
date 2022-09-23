@@ -30,7 +30,6 @@ public class FournisseurServiceImpl implements IFournisseurService {
 	SecteurActiviteRepository secteurActiviteRepository;
 
 	@Override
-	
 	public List<Fournisseur> retrieveAllFournisseurs() {
 		List<Fournisseur> fournisseurs = (List<Fournisseur>) fournisseurRepository.findAll();
 		for (Fournisseur fournisseur : fournisseurs) {
