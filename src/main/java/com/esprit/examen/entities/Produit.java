@@ -24,6 +24,9 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Produit implements Serializable {
 
+	public Produit(String string, String string2, float f, Date date1, Date date2) {
+		// TODO Auto-generated constructor stub
+	}
 	/**
 	 * 
 	 */
