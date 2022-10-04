@@ -23,6 +23,9 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Facture implements Serializable {
+	public Facture(Date dateNaissance, Date dateNaissance2, boolean b, Object object, Object object2, Object object3) {
+		// TODO Auto-generated constructor stub
+	}
 	private static final long serialVersionUID = 1L;
 
 	@Id
