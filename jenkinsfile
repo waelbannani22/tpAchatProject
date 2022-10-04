@@ -26,8 +26,7 @@ println "date : " + datePart + "\ttime : " + timePart
 
             }
         }
-    }
-     stage('Building our image') { 
+          stage('Building our image') { 
 15
             steps { 
 16
@@ -66,5 +65,9 @@ println "date : " + datePart + "\ttime : " + timePart
                 sh "docker rmi $registry:$BUILD_NUMBER" 
 33
             }
+34
+        } 
+    }
+    
 }
 
