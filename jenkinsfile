@@ -13,9 +13,9 @@ pipeline {
     stages {
         stage('Checkout GIT') {
             steps {
-                echo 'Pulling';
-                git branch:'master',
-                url:'https://github.com/waelbannani22/tpAchatProject'
+           
+               git 'https://github.com/waelbannani22/tpAchatProject.git' 
+                
                 script{
                                     Date date = new Date()
 String datePart = date.format("dd/MM/yyyy")
