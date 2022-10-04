@@ -13,8 +13,8 @@ pipeline {
     stages {
         stage('Checkout GIT') {
             steps {
-                echo 'Pulling';
-                url:'https://github.com/waelbannani22/tpAchatProject.git'
+                git branch:'master',
+                url:'https://github.com/waelbannani22/tpAchatProject'
                 
                 script{
                                     Date date = new Date()
