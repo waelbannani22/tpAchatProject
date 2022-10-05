@@ -1,7 +1,9 @@
 pipeline {
     agent any
  environment { 
-
+tools{
+maven : '3.6.3'
+}
         registry = "hazem12345/tp-achat-project" 
 
         registryCredential = 'dockerHub' 
