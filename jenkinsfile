@@ -1,8 +1,6 @@
 pipeline {
     agent any
- tools {
- maven 'M2_HOME'
- }
+
  environment { 
 
         registry = "hazem12345/tp-achat-project" 
@@ -50,10 +48,10 @@ println "date : " + datePart + "\ttime : " + timePart
         sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar'
         }
         }
-             stage('MVN PACKAGE')
+             stage('MVN INSTALL')
         {
         steps {
-        sh 'mvn package'
+        sh 'mvn install'
         }
         }
           stage('Building our image') { 
