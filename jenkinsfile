@@ -1,11 +1,6 @@
 pipeline {
     agent any
-    
-    
-    
-  tools {
-maven  '3.6.3'
-}
+
  environment { 
 
         registry = "hazem12345/tp-achat-project" 
@@ -46,16 +41,17 @@ println "date : " + datePart + "\ttime : " + timePart
         sh 'mvn compile'
         }
         }
-            stage('MVN PACKAGE')
-        {
-        steps {
-        sh 'mvn package'
-        }
-        }
+       
         stage('MVN SONARQUBE')
         {
         steps{
         sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar'
+        }
+        }
+             stage('MVN PACKAGE')
+        {
+        steps {
+        sh 'mvn package'
         }
         }
           stage('Building our image') { 
