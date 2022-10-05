@@ -11,13 +11,12 @@
 	<groupId>com.esprit.examen</groupId>
 	<artifactId>tpAchatProject</artifactId>
 	<version>1.0</version>
-	<packaging>war</packaging>
 	<name>tpAchatProject</name>
-	<description>tpachatproject</description>
+	<description>tpAchatProject</description>
 	<properties>
 		<java.version>1.8</java.version>
+		<maven-jar-plugin.version>3.1.1</maven-jar-plugin.version>
 	</properties>
-
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -53,11 +52,10 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-        <groupId>org.projectlombok</groupId>
-        <artifactId>lombok</artifactId>
-        <version>1.18.20</version>
-        <scope>provided</scope>
-    </dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version> 1.18.24</version>
+		</dependency>
 		<dependency>
 			<groupId>io.springfox</groupId>
 			<artifactId>springfox-boot-starter</artifactId>
@@ -83,4 +81,5 @@
 		</plugins>
 	</build>
 
+	<packaging>war</packaging>
 </project>
