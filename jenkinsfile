@@ -6,9 +6,9 @@ maven 'M2_HOME'
 }
  environment { 
 
-        registry = "hazem12345/tp-achat-project" 
+        registry = "waelbannani/tpachat" 
 
-        registryCredential = 'dockerHub' 
+        registryCredential = 'dockerhub' 
 
         dockerImage = '' 
 
@@ -17,7 +17,7 @@ maven 'M2_HOME'
     stages {
         stage('Checkout GIT') {
             steps {
-                git branch:'master',
+                git branch:'wael',
                 url:'https://github.com/waelbannani22/tpAchatProject'
                 
                 script{
