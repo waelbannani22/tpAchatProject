@@ -86,7 +86,7 @@ public class FactureServiceImplTest {
 		Facture s = new Facture(dateNaissance, dateNaissance, false, null, null, null);
      	Facture savedStock= factureService.addFacture(s);
 		
-		Facture s1 = factureService.retrieveFacture(savedStock.getIdFacture());
+		
      	//factureService.cancelFacture(savedStock.getIdFacture());
      	assertEquals(s, savedStock);
 		

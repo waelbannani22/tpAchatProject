@@ -41,7 +41,9 @@ public class ProduitServiceImplTest {
 		Produit savedProduit= produitservice.addProduit(c);
 		assertNotNull(savedProduit.getDateCreation());
 		assertNotNull(savedProduit.getDateDerniereModification());
+
 		assertEquals(2.5,savedProduit.getPrix() );
+
 		assertNotNull(savedProduit.getCodeProduit());
 		assertNotNull(savedProduit.getLibelleProduit());
 		produitservice.deleteProduit(savedProduit.getIdProduit());	
