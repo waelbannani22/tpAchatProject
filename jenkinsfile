@@ -65,6 +65,12 @@ println "date : " + datePart + "\ttime : " + timePart
         sh 'mvn install'
         }
         }
+         stage('MVN NEXUS')
+        {
+        steps {
+        sh 'mvn clean deploy'
+        }
+        }
           stage('Building our image') { 
 
             steps { 
