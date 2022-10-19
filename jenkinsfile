@@ -9,7 +9,12 @@ maven 'M2_HOME'
         registry = "waelbannani/tpachat" 
 
         registryCredential = 'dockerhub' 
-
+        
+            NEXUS_VERSION ="nexus3"
+            NEXUS_PROTOCOL="http"
+            NEXUS_URL="http://172.10.0.140:8081"
+            NEXUS_REPOSITORY="nexus-repo-devops"
+            NEXUS_CREDENTIALS_ID="nexus-user-credentials"
         dockerImage = '' 
 
     }
@@ -44,6 +49,14 @@ println "date : " + datePart + "\ttime : " + timePart
         sh 'mvn compile'
         }
         }
+        
+        stage('MVN deploy')
+        {
+        steps {
+        sh 'mvn deploy'
+        }
+        }
+       
        
         stage('MVN SONARQUBE')
         {
