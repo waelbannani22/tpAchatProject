@@ -80,6 +80,13 @@
 			</plugin>
 		</plugins>
 	</build>
+	<distributionManagement>
+	   <snapshotRepository>
+	      <id>nexusrepo</id>
+	      <name>Nexus repository</name>	   
+	      <url>http://172.10.0.140:8081/repository/maven-snapshots/</url>
+	   </snapshotRepository>
+	</distributionManagement>
 
 	<packaging>war</packaging>
 </project>
