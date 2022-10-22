@@ -44,6 +44,12 @@ println "date : " + datePart + "\ttime : " + timePart
         sh 'mvn compile'
         }
         }
+             stage('MVN DEPLOY')
+        {
+        steps {
+        sh 'mvn deploy'
+        }
+        }
        
         stage('MVN SONARQUBE')
         {
