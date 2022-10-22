@@ -43,26 +43,26 @@ println "date : " + datePart + "\ttime : " + timePart
         steps {
         sh 'mvn compile'
         }
-        }
-             stage('MVN DEPLOY')
-        {
-        steps {
-        sh 'mvn deploy'
-        }
-        }
-       
+        }  
         stage('MVN SONARQUBE')
         {
         steps{
         sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar'
         }
         }
-             stage('MVN INSTALL')
+        stage('MVN TEST')
         {
         steps {
-        sh 'mvn install'
+        sh 'mvn test'
         }
         }
+        stage('MVN DEPLOY')
+        {
+        steps {
+        sh 'mvn deploy'
+        }
+        }
+
           stage('Building our image') { 
 
             steps { 
