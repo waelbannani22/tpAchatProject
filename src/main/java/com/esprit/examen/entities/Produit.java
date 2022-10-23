@@ -26,12 +26,7 @@ import lombok.Setter;
 @Builder
 public class Produit implements Serializable {
 
-	public Produit(String string, String string2, float f, Date date1, Date date2) {
-		// TODO Auto-generated constructor stub
-	}
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

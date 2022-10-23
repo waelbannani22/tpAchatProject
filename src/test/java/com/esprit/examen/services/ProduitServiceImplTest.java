@@ -48,22 +48,6 @@ class ProduitServiceImplTest {
 		
  	}
 	@Test
-<<<<<<< Updated upstream
-	public void testAddProduit() throws ParseException {
-		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-		Date Date1 = dateFormat.parse("25/09/2000");
-		Date Date2 = dateFormat.parse("26/10/1919");
-		Produit c = new Produit("produitI", "produitII", (float) 2.5, Date1,Date2);
-		Produit savedProduit= produitservice.addProduit(c);
-		assertNotNull(savedProduit.getDateCreation());
-		assertNotNull(savedProduit.getDateDerniereModification());
-
-		assertEquals(2.5,savedProduit.getPrix() );
-
-		assertNotNull(savedProduit.getCodeProduit());
-		assertNotNull(savedProduit.getLibelleProduit());
-		produitservice.deleteProduit(savedProduit.getIdProduit());	
-=======
 	@Order(1)
 	 void testAddProduit(){
 		Mockito.when(produitrepo.findById(Mockito.anyLong())).thenReturn(Optional.of(p));
@@ -75,7 +59,6 @@ class ProduitServiceImplTest {
 		assertNotNull(produit.getLibelleProduit());
 		produitservice.deleteProduit(produit.getIdProduit());
 		
->>>>>>> Stashed changes
 	}
 	@Test
 	@Order(6)
