@@ -1,38 +1,54 @@
 package com.esprit.examen.services;
+
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.Assert.*;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import static org.junit.jupiter.api.Assertions.*;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
-import javax.transaction.Transactional;
-
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
+import java.util.Optional;
+import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.transaction.annotation.Transactional;
 import com.esprit.examen.entities.Produit;
 import com.esprit.examen.entities.Stock;
-@RunWith(SpringRunner.class)
-@SpringBootTest
-public class ProduitServiceImplTest {
-	@Autowired
-	IProduitService produitservice;
+import com.esprit.examen.repositories.ProduitRepository;
+import com.esprit.examen.repositories.StockRepository;
+
+@ExtendWith(MockitoExtension.class)
+class ProduitServiceImplTest {
+
+    @Mock
+	StockRepository stockrepo;
+    @InjectMocks
+    StockServiceImpl stockservice;
+    Stock s = new Stock("stock test",10,100);	
+	@Mock
+	ProduitRepository produitrepo;
+	@InjectMocks
+     ProduitServiceImpl produitservice;
+	Produit p =  new Produit("produitI", "produitII", (float) 2.5, new Date(),new Date());
+	@SuppressWarnings("serial")
+	ArrayList<Produit> listeproduits = new ArrayList<Produit>() {
+	{
+	add( new Produit("produitI", "produitII", (float) 2.5, new Date(),new Date()));
+	add( new Produit("produit", "produitI", (float) 2, new Date(),new Date()));
+	}
+	};
 	@Test
-	public void  testretrieveAllProduits() throws ParseException {
-		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-		Date Date1 = dateFormat.parse("25/09/2000");
-		Date Date2 = dateFormat.parse("26/10/1919");
-		List<Produit> produits = (List<Produit>) produitservice.retrieveAllProduits();
-		int expected = produits.size();
-		Produit c = new Produit("produitI", "produitII", (float) 2.5, Date1,Date2);
-		Produit produit = produitservice.addProduit(c);
-		assertEquals(expected + 1, produitservice.retrieveAllProduits().size());
-		produitservice.deleteProduit(produit.getIdProduit());
+	@Order(2)
+	 void  testretrieveAllProduits()  {
+		Mockito.when(produitrepo.findAll()).thenReturn(listeproduits);
+		List<Produit> pr =produitservice.retrieveAllProduits();
+		assertNotNull(pr);
+		
  	}
 	@Test
+<<<<<<< Updated upstream
 	public void testAddProduit() throws ParseException {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 		Date Date1 = dateFormat.parse("25/09/2000");
@@ -47,50 +63,59 @@ public class ProduitServiceImplTest {
 		assertNotNull(savedProduit.getCodeProduit());
 		assertNotNull(savedProduit.getLibelleProduit());
 		produitservice.deleteProduit(savedProduit.getIdProduit());	
+=======
+	@Order(1)
+	 void testAddProduit(){
+		Mockito.when(produitrepo.findById(Mockito.anyLong())).thenReturn(Optional.of(p));
+		Produit pr =produitservice.retrieveProduit(2L);		
+		Produit produit= produitservice.addProduit(pr);
+		assertNotNull(produit.getDateDerniereModification());
+		assertEquals(produit.getPrix(),pr.getPrix());
+		assertNotNull(produit.getCodeProduit());
+		assertNotNull(produit.getLibelleProduit());
+		produitservice.deleteProduit(produit.getIdProduit());
+		
+>>>>>>> Stashed changes
 	}
 	@Test
-	public void testDeleteProduit() throws ParseException {
-		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-		Date Date1 = dateFormat.parse("25/09/2000");
-		Date Date2 = dateFormat.parse("26/10/1919");
-		Produit c = new Produit("produitI", "produitII", (float) 2.5, Date1,Date2);
-		Produit savedproduit= produitservice.addProduit(c);
-		produitservice.deleteProduit(savedproduit.getIdProduit());
-		assertNull(produitservice.retrieveProduit(savedproduit.getIdProduit()));
+	@Order(6)
+	 void testDeleteProduit()  {
+		Mockito.when(produitrepo.findById(Mockito.anyLong())).thenReturn(Optional.of(p));
+		Produit pr =produitservice.retrieveProduit(2L);
+		produitservice.deleteProduit(pr.getIdProduit());
+		assertNull(produitservice.retrieveProduit(pr.getIdProduit()));
 	}
 	@Test
-	public void testretrieveProduit() throws ParseException
+	@Order(4)
+	 void testretrieveProduit() 
 	{
-
-			SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-			Date Date1 = dateFormat.parse("25/09/2000");
-			Date Date2 = dateFormat.parse("26/10/1919");
-			Long id =(long)0;
-			Produit c = new Produit("produitI", "produitII", (float) 2.5, Date1,Date2);
-			produitservice.addProduit(c);
-			assertNull(produitservice.retrieveProduit(id));				
+		Mockito.when(produitrepo.findById(Mockito.anyLong())).thenReturn(Optional.of(p));
+		 
+		Produit pr =produitservice.retrieveProduit(2L);
+		assertNotNull(pr);
+		
+		
 	}	
 	@Test
-	public void testupdateProduit( )  throws ParseException{
-		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-		Date Date1 = dateFormat.parse("25/09/2000");
-		Date Date2 = dateFormat.parse("26/10/1919");
-		Produit c = new Produit("produitI", "produitII", (float) 2.5, Date1,Date2);	
-		c.setLibelleProduit("produit3");
-		assertThat(c.getLibelleProduit()).isEqualTo("produit3");
+	@Order(3)
+	 void testupdateProduit( ) {
+		Mockito.when(produitrepo.findById(Mockito.anyLong())).thenReturn(Optional.of(p));
+		Produit pr =produitservice.retrieveProduit(2L);   
+		pr.setLibelleProduit("produit3");
+		assertThat(pr.getLibelleProduit()).isEqualTo("produit3");
 			}
 	@Test
+	@Order(5)
 	@Transactional
-
-	public void testassignProduitToStock()  throws ParseException {
-		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-		Date Date1 = dateFormat.parse("25/09/2000");
-		Date Date2 = dateFormat.parse("26/10/1919");
-		Produit c = new Produit("produitI", "produitII", (float) 2.5, Date1,Date2);	
-		Stock s = new Stock("stock test",10,100);	
-		c.setStock(s);
-		Produit produit = produitservice.addProduit(c);
+	 void testassignProduitToStock()   {
+		Mockito.when(produitrepo.findById(Mockito.anyLong())).thenReturn(Optional.of(p));
+		Mockito.when(stockrepo.findById(Mockito.anyLong())).thenReturn(Optional.of(s));
+		Stock s = stockservice.retrieveStock(1l); 
+		Produit pr =produitservice.retrieveProduit(2L);
+		pr.setStock(s);
+		Produit produit = produitservice.addProduit(pr);
  		assertThat(produit.getStock().getIdStock()).isEqualTo(s.getIdStock());
 
 	}
+
 }

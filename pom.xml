@@ -80,6 +80,7 @@
 			</plugin>
 		</plugins>
 	</build>
+<<<<<<< Updated upstream
 <distributionManagement>
 	   <snapshotRepository>
 	      <id>nexusrepo</id>
@@ -88,4 +89,7 @@
 	   </snapshotRepository>
 	</distributionManagement>
 	<packaging>war</packaging>
+=======
+
+>>>>>>> Stashed changes
 </project>
