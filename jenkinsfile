@@ -59,7 +59,7 @@ println "date : " + datePart + "\ttime : " + timePart
         stage('MVN DEPLOY')
         {
         steps {
-        sh 'mvn deploy'
+        sh 'mvn deploy -Dmaven.test.skip=true'
         }
         }
 
