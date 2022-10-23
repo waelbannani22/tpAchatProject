@@ -17,7 +17,7 @@ maven 'M2_HOME'
     stages {
         stage('Checkout GIT') {
             steps {
-                git branch:'master',
+                git branch:'hazem',
                 url:'https://github.com/waelbannani22/tpAchatProject'
                 
                 script{
