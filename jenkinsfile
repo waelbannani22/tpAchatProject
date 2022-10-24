@@ -15,14 +15,14 @@ maven 'M2_HOME'
     }
     
     stages {
-        stage('Checkout GIT') {
+        ma('Checkout GIT') {
             steps {
                 git branch:'master',
                 url:'https://github.com/waelbannani22/tpAchatProject'
                 
                 script{
                                     Date date = new Date()
-String datePart = date.format("dd/MM/yyyy")
+
 String timePart = date.format("HH:mm:ss")
 
 println "date : " + datePart + "\ttime : " + timePart
