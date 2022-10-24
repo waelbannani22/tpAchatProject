@@ -81,11 +81,11 @@
 		</plugins>
 	</build>
 <distributionManagement>
-	   <snapshotRepository>
+	   <repository>
 	      <id>deploymentRepo</id>
 	      <name>Nexus repository</name>	   
 	      <url>http://192.168.33.10:8081/repository/maven-releases/</url>
-	   </snapshotRepository>
+	   </repository>
 	</distributionManagement>
 	<packaging>war</packaging>
 
