@@ -105,10 +105,6 @@ println "date : " + datePart + "\ttime : " + timePart
 
         } 
     }
-      post {
-        always {
-            emailext body: 'jenkins build finished', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'jenkins build'
-        }
-    }
+     
 }
 
