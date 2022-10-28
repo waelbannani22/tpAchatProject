@@ -105,6 +105,13 @@ println "date : " + datePart + "\ttime : " + timePart
 
         } 
     }
+    post{
+        always{
+            mail to: "hazem.dawahi@esprit.tn",
+            subject: "Jenkins",
+            body: "build finished"
+        }
+    }
      
 }
 
