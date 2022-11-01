@@ -10,11 +10,7 @@ maven 'M2_HOME'
 
         registryCredential = 'dockerhub' 
         
-            NEXUS_VERSION ="nexus3"
-            NEXUS_PROTOCOL="http"
-            NEXUS_URL="http://172.10.0.140:8081"
-            NEXUS_REPOSITORY="nexusrepo"
-            NEXUS_CREDENTIALS_ID="nexusrepo"
+            
         dockerImage = '' 
 
     }
@@ -44,6 +40,12 @@ maven 'M2_HOME'
         }
         }
         
+              stage('MVN INSTALL')
+        {
+        steps {
+        sh 'mvn install'
+        }
+        }
         
        
        
