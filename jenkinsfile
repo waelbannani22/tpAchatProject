@@ -25,13 +25,7 @@ maven 'M2_HOME'
                 git branch:'wael',
                 url:'https://github.com/waelbannani22/tpAchatProject'
                 
-                script{
-                                    Date date = new Date()
-String datePart = date.format("dd/MM/yyyy")
-String timePart = date.format("HH:mm:ss")
-
-println "date : " + datePart + "\ttime : " + timePart
-                }
+              
 
             }
         }
@@ -53,7 +47,7 @@ println "date : " + datePart + "\ttime : " + timePart
         
        
        
-        stage('MVN SONARQUBE')
+        /*stage('MVN SONARQUBE')
         {
         steps{
         sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=esprit'
@@ -69,6 +63,13 @@ println "date : " + datePart + "\ttime : " + timePart
         {
         steps {
         sh 'mvn clean deploy'
+        }
+        }
+        */
+        stage('Docker compose ')
+        {
+        steps {
+        sh 'docker-compose up'
         }
         }
        
