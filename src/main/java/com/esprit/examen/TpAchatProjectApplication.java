@@ -8,6 +8,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 @EnableScheduling
 @SpringBootApplication
+
 public class TpAchatProjectApplication {
 
 	public static void main(String[] args) {
