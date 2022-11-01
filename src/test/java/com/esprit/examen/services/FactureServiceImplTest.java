@@ -44,7 +44,7 @@ public class FactureServiceImplTest {
 		Date dateNaissance = dateFormat.parse("31/09/2000");
 		Facture s = new Facture(dateNaissance, dateNaissance, false, null, null, null);
 		Facture savedStock = factureService.addFacture(s);
-
+		
 		factureService.cancelFacture(savedStock.getIdFacture());
 
 	}
