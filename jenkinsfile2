@@ -1,0 +1,58 @@
+pipeline {
+    agent any
+
+ environment { 
+
+        registry = "waelbannani/tpachat" 
+
+        registryCredential = 'dockerhub' 
+        
+            
+        dockerImage = '' 
+
+    }
+    
+    stages {
+        stage('Checkout GIT') {
+            steps {
+                git branch:'wael',
+                url:'https://github.com/waelbannani22/tpAchatProject'
+                
+              
+
+            }
+        }
+        stage('MVN CLEAN')
+        {
+        steps {
+        sh """mvn -version"""
+        sh 'mvn clean'
+        }
+        
+        }
+       
+        
+              stage('MVN INSTALL')
+        {
+        steps {
+        sh 'mvn package'
+        }
+        }
+       
+       
+       
+      
+        stage('Docker compose ')
+        {
+        steps {
+        sh 'sudo docker-compose up'
+        }
+        }
+       
+
+
+        
+    }
+    
+}
+
