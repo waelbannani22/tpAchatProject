@@ -9,7 +9,7 @@ services:
       - MYSQL_ROOT_PASSWORD=""
       - MYSQL_DATABASE=$MYSQLDB_DATABASE
     ports:
-      - $MYSQLDB_LOCAL_PORT:$MYSQLDB_DOCKER_PORT
+      - 3306:3306
     volumes:
       - db:/var/lib/mysql
   app:
