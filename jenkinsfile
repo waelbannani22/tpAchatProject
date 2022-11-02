@@ -43,10 +43,15 @@ maven 'M2_HOME'
               stage('MVN INSTALL')
         {
         steps {
-        sh 'mvn install'
+        sh 'mvn package'
         }
         }
-        
+         stage('MVN NEXUS')
+        {
+        steps {
+        sh 'mvn clean deploy'
+        }
+        }
        
        
         /*stage('MVN SONARQUBE')
@@ -58,7 +63,7 @@ maven 'M2_HOME'
              stage('MVN INSTALL')
         {
         steps {
-        sh 'mvn install'
+        sh 'mvn package'
         }
         }
          stage('MVN NEXUS')
