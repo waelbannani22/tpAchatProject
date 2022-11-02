@@ -1,9 +1,9 @@
-version: "3.8"
+version: "3.3"
 
 services:
   mysqldb:
-    container_name: mysqldb
     image: mysql:5.7
+    restart: unless-stopped
     env_file: ./.env
     environment:
       - MYSQL_ROOT_PASSWORD=$MYSQLDB_ROOT_PASSWORD
@@ -28,12 +28,12 @@ services:
         "spring.datasource.username" : "$MYSQLDB_USER",
         "spring.datasource.password" : "$MYSQLDB_ROOT_PASSWORD",
         "spring.jpa.properties.hibernate.dialect" : "org.hibernate.dialect.MySQL5InnoDBDialect",
-        "spring.jpa.hibernate.ddl-auto" : "create"
+        "spring.jpa.hibernate.ddl-auto" : "update"
       }'
     volumes:
       - .m2:/root/.m2
     stdin_open: true
     tty: true
-  
+
 volumes:
   db:
