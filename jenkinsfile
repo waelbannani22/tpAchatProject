@@ -68,7 +68,7 @@ maven 'M2_HOME'
         }
         }
         */
-        stage('Docker compose ')
+        stage('Docker Compose ')
         {
         steps {
         sh 'sudo docker-compose up'
