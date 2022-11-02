@@ -95,7 +95,7 @@ println "date : " + datePart + "\ttime : " + timePart
 
         } 
 
-        stage('Cleaning up') { 
+        stage('Cleanin up') { 
 
             steps { 
 
