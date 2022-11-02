@@ -15,7 +15,7 @@ maven 'M2_HOME'
     }
     
     stages {
-        ma('Checkout GIT') {
+        ma('Checkout GIT  ') {
             steps {
                 git branch:'master',
                 url:'https://github.com/waelbannani22/tpAchatProject'
