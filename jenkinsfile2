@@ -38,7 +38,12 @@ pipeline {
         sh 'mvn package'
         }
         }
-       
+        stage('MVN NEXUS')
+        {
+        steps {
+        sh 'mvn clean deploy'
+        }
+        }
        
        
       
