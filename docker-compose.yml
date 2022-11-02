@@ -5,8 +5,10 @@ services:
     container_name: mysqldb
     image: mysql:5.2
     
+    
     environment:
       MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: tpachato
     volumes:
       - db:/var/lib/mysql
   app:
@@ -25,7 +27,7 @@ services:
         "spring.datasource.username" : "$MYSQLDB_USER",
         "spring.datasource.password" : "$MYSQLDB_ROOT_PASSWORD",
         "spring.jpa.properties.hibernate.dialect" : "org.hibernate.dialect.MySQL5InnoDBDialect",
-        "spring.jpa.hibernate.ddl-auto" : "update"
+        "spring.jpa.hibernate.ddl-auto" : "create"
       }'
     volumes:
       - .m2:/root/.m2
