@@ -40,7 +40,7 @@ maven 'M2_HOME'
         }
         }
         
-              stage('MVN INSTALL')
+              stage('MVN package')
         {
         steps {
         sh 'mvn package'
