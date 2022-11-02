@@ -1,7 +1,13 @@
 version: "3.8"
 
 services:
- 
+  mysqldb:
+    image: mysql:5.7
+    networks:
+      - springmysql-net:
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=true
+      - MYSQL_DATABASE=tpachato
   app:
     depends_on:
       - mysqldb
