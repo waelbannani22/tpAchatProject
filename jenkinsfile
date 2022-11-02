@@ -25,7 +25,7 @@ maven 'M2_HOME'
 
             }
         }
-        stage('MVN CLEAN')
+        stage('MVN CLEAnN')
         {
         steps {
         sh """mvn -version"""
