@@ -1,17 +1,7 @@
 version: "3.8"
 
 services:
-  mysqldb:
-    image: mysql:latest
-    restart: unless-stopped
-    env_file: ./.env
-    environment:
-      - MYSQL_ROOT_PASSWORD=""
-      - MYSQL_DATABASE=$MYSQLDB_DATABASE
-    ports:
-      - 3306:3306
-    volumes:
-      - db:/var/lib/mysql
+ 
   app:
     depends_on:
       - mysqldb
