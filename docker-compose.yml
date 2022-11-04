@@ -7,8 +7,8 @@ services:
     networks:
       - springmysql-net
     environment:
-      - MYSQL_ALLOW_EMPTY_PASSWORD=true
-      - MYSQL_DATABASE=tpachato
+    - MYSQL_ROOT_PASSWORD=$MYSQLDB_ROOT_PASSWORD
+    - MYSQL_DATABASE=tpachato
   app:
     depends_on:
       - mysqldb
