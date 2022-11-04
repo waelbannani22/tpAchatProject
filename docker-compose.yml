@@ -40,5 +40,7 @@ services:
       - 4200:80
     depends_on:
       - app
+networks:
+  springmysql-net:
 volumes:
   db:
