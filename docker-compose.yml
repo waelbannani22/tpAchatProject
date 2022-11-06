@@ -7,7 +7,7 @@ services:
     restart: unless-stopped
     env_file: ./.env
     environment:
-      - MYSQLDB_USER = root
+    
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=tpachato
     ports:
@@ -28,7 +28,7 @@ services:
     environment:
       SPRING_APPLICATION_JSON: '{
         "spring.datasource.url"  : "jdbc:mysql://mysqldb:$MYSQLDB_DOCKER_PORT/$MYSQLDB_DATABASE?useSSL=false&createDatabaseIfNotExist=true&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC",
-        "spring.datasource.username" : "$MYSQLDB_USER",
+        "spring.datasource.username" : "root",
         "spring.datasource.password" : "$MYSQLDB_ROOT_PASSWORD",
         "spring.jpa.properties.hibernate.dialect" : "org.hibernate.dialect.MySQL5InnoDBDialect",
         "spring.jpa.hibernate.ddl-auto" : "update"
