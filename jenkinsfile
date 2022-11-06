@@ -104,6 +104,13 @@ println "date : " + datePart + "\ttime : " + timePart
             }
 
         } 
+            stage('Docker Compose ')
+        {
+        steps {
+        sh 'sudo docker-compose up'
+        }
+        }
+       
     }
     post{
         always{
