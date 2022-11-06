@@ -2,6 +2,7 @@ version: "3.8"
 
 services:
   mysqldb:
+    container_name: mysqldb
     image: mysql:5.7
     restart: unless-stopped
     env_file: ./.env
@@ -12,6 +13,8 @@ services:
       - $MYSQLDB_LOCAL_PORT:$MYSQLDB_DOCKER_PORT
     volumes:
       - db:/var/lib/mysql
+    networks:
+     - mysql
   app:
     depends_on:
       - mysqldb
@@ -30,6 +33,11 @@ services:
         "spring.jpa.properties.hibernate.dialect" : "org.hibernate.dialect.MySQL5InnoDBDialect",
         "spring.jpa.hibernate.ddl-auto" : "update"
       }'
+      depends_on:
+      - mysqldb
+      networks:
+      - mysql
+      - frontendNetwork
     volumes:
       - .m2:/root/.m2
     stdin_open: true
@@ -41,5 +49,11 @@ services:
       - 4200:80
     depends_on:
       - app
+    networks:
+      - frontendNetwork
 volumes:
   db:
+  
+ networks:
+  mysql:
+  frontendNetwork:
