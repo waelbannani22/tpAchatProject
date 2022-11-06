@@ -54,6 +54,6 @@ services:
 volumes:
   db:
   
- networks:
+networks:
   mysql:
   frontendNetwork:
