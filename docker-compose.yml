@@ -16,8 +16,7 @@ services:
     networks:
      - mysql
   app:
-    depends_on:
-      - mysqldb
+    
     build:
       context: "./"
       dockerfile: "Dockerfile"
@@ -33,9 +32,9 @@ services:
         "spring.jpa.properties.hibernate.dialect" : "org.hibernate.dialect.MySQL5InnoDBDialect",
         "spring.jpa.hibernate.ddl-auto" : "update"
       }'
-      depends_on:
+    depends_on:
       - mysqldb
-      networks:
+    networks:
       - mysql
       - frontendNetwork
     volumes:
