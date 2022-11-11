@@ -39,8 +39,6 @@ services:
     container_name: angular
     ports:
       - 4200:80
-    networks:
-      - frontendNetwork
     depends_on:
       - app
 volumes:
