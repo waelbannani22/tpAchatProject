@@ -44,6 +44,7 @@ println "date : " + datePart + "\ttime : " + timePart
         sh 'mvn package'
         }
         }  
+           /*
         stage('MVN SONARQUBE')
         {
         steps{
@@ -104,7 +105,7 @@ println "date : " + datePart + "\ttime : " + timePart
             }
 
         } 
-        
+           */
         stage('Docker compose ')
         {
         steps {
