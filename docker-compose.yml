@@ -1,8 +1,8 @@
-version: "3.8"
+version: "3.3"
 
 services:
   mysqldb:
-    image: mysql:8
+    image: mysql:5.7
     restart: unless-stopped
     env_file: ./.env
     environment:
@@ -12,9 +12,6 @@ services:
       - $MYSQLDB_LOCAL_PORT:$MYSQLDB_DOCKER_PORT
     volumes:
       - db:/var/lib/mysql
-    networks:
-      - springmysql-net
-
   app:
     depends_on:
       - mysqldb
@@ -23,8 +20,6 @@ services:
       dockerfile: "Dockerfile"
     restart: on-failure
     env_file: ./.env
-    networks:
-      - springmysql-net
     ports:
       - $SPRING_LOCAL_PORT:$SPRING_DOCKER_PORT
     environment:
@@ -37,26 +32,8 @@ services:
       }'
     volumes:
       - .m2:/root/.m2
-    networks:
-      - springmysql-net
-      - frontendNetwork
     stdin_open: true
     tty: true
-  angular:
-    image: hazem12345/angularfront
-    container_name: angular
-    ports:
-      - 4200:80
-    networks:
-      - frontendNetwork
-    depends_on:
-      - app
-      
-volumes:
-  db:     
-networks:
-  springmysql-net:
-  frontendNetwork:
-  
 
-  
+volumes:
+  db:
