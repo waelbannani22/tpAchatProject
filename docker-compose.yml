@@ -2,26 +2,19 @@ version: "3.8"
 
 services:
   mysqldb:
-    container_name: mysqldb
-    image: mysql:5.7
+    image: mysql:8
     restart: unless-stopped
     env_file: ./.env
     environment:
       - MYSQL_ROOT_PASSWORD=$MYSQLDB_ROOT_PASSWORD
       - MYSQL_DATABASE=$MYSQLDB_DATABASE
-    networks:
-      - springmysql-net
     ports:
       - $MYSQLDB_LOCAL_PORT:$MYSQLDB_DOCKER_PORT
     volumes:
       - db:/var/lib/mysql
-  angular:
-    image: hazem12345/angularfront
-    container_name: angular
-    ports:
-      - 4200:80
-    depends_on:
-      - app
+    networks:
+      - springmysql-net
+
   app:
     depends_on:
       - mysqldb
@@ -44,10 +37,26 @@ services:
       }'
     volumes:
       - .m2:/root/.m2
+    networks:
+      - springmysql-net
+      - frontendNetwork
     stdin_open: true
     tty: true
+  angular:
+    image: hazem12345/angularfront
+    container_name: angular
+    ports:
+      - 4200:80
+    networks:
+      - frontendNetwork
+    depends_on:
+      - app
+      
+volumes:
+  db:     
 networks:
   springmysql-net:
-volumes:
-  db:
+  frontendNetwork:
+  
+
   
