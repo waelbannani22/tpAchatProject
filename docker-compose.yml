@@ -34,6 +34,14 @@ services:
       - .m2:/root/.m2
     stdin_open: true
     tty: true
-
+  angular:
+    image: hazem12345/angularfront
+    container_name: angular
+    ports:
+      - 4200:80
+    networks:
+      - frontendNetwork
+    depends_on:
+      - app
 volumes:
   db:
