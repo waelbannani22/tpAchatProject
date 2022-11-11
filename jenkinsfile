@@ -1,0 +1,58 @@
+pipeline {
+    agent any
+tools 
+{
+maven 'M2_HOME'
+}
+
+    
+    stages {
+        stage('Checkout GIT') {
+            steps {
+                git branch:'rami',
+                url:'https://github.com/waelbannani22/tpAchatProject'
+                
+              
+
+            }
+        }
+        stage('MVN CLEAN')
+        {
+        steps {
+        sh """mvn -version"""
+        sh 'mvn clean'
+        }
+        
+        }
+       
+        
+              stage('MVN INSTALL')
+        {
+        steps {
+        sh 'mvn package'
+        }
+        }
+        stage('MVN NEXUS')
+        {
+        steps {
+        sh 'mvn clean deploy'
+        }
+        }
+       
+       
+      /*
+        stage('Docker compose ')
+        {
+        steps {
+        sh 'sudo docker-compose down '
+        sh 'sudo docker-compose up -d'
+        }
+        }
+        */
+       
+
+
+        
+    }
+    
+}
