@@ -40,7 +40,7 @@ maven 'M2_HOME'
         }
         }
         
-        
+        /*
        
               stage('MVN INSTALL')
         {
@@ -48,6 +48,7 @@ maven 'M2_HOME'
         sh 'mvn package'
         }
         }
+        */
         stage('MVN NEXUS')
         {
         steps {
