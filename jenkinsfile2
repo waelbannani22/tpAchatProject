@@ -33,7 +33,12 @@ maven 'M2_HOME'
         }
         
         }
-       
+           stage('MVN test mock')
+        {
+        steps {
+        sh 'mvn test FactureServiceMockTest.java'
+        }
+        }
         
               stage('MVN INSTALL')
         {
