@@ -41,7 +41,7 @@ maven 'M2_HOME'
         }
         
         
-        /*
+       
               stage('MVN INSTALL')
         {
         steps {
@@ -64,10 +64,16 @@ maven 'M2_HOME'
         sh 'sudo docker-compose up -d'
         }
         }
+            stage('MVN test JUNIT')
+        {
+        steps {
+        sh 'mvn  test'
+        }
+        }
        
 
 
-        */
+       
     }
     
     
