@@ -21,7 +21,7 @@ import com.esprit.examen.repositories.FactureRepository;
 
 
 
-@SpringBootTest
+
 @ExtendWith(MockitoExtension.class)
 public class FactureServiceMockTest {
 	

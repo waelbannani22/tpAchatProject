@@ -36,7 +36,7 @@ maven 'M2_HOME'
            stage('MVN test mock')
         {
         steps {
-        sh 'mvn test FactureServiceMockTest.java'
+        sh "mvn clean test -e  -Dtest=com.esprit.examen.services.FactureServiceMockTest"
         }
         }
         
