@@ -2,6 +2,7 @@ version: "3.8"
 
 services:
   mysqldb:
+    container_name: mysqldb
     image: mysql:5.7
     networks:
       - springmysql-net
