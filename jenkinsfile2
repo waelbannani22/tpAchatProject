@@ -40,6 +40,8 @@ maven 'M2_HOME'
         }
         }
         
+        
+        /*
               stage('MVN INSTALL')
         {
         steps {
@@ -67,6 +69,7 @@ maven 'M2_HOME'
 
         
     }
+    */
     
 }
 
