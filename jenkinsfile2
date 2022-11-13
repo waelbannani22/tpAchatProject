@@ -45,14 +45,14 @@ maven 'M2_HOME'
               stage('MVN INSTALL')
         {
         steps {
-        sh 'mvn package -DskipTests'
+        sh 'mvn package '
         }
         }
         
         stage('MVN NEXUS')
         {
         steps {
-        sh 'mvn  deploy -DskipTests'
+        sh 'mvn  deploy '
         }
         }
        
