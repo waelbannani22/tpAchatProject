@@ -4,12 +4,15 @@ pipeline {
             args '-u root
         }
 
- 
+ options {
+    skipDefaultCheckout(true)
+}
     
     stages {
         stage('Checkout GIT') {
         
             steps {
+               checkout scm
                 git branch:'hazem',
                 url:'https://github.com/waelbannani22/tpAchatProject'
              
