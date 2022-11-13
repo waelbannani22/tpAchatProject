@@ -67,7 +67,7 @@ println "date : " + datePart + "\ttime : " + timePart
         sh 'mvn deploy'
         }
         }
-/*
+
           stage('Building our image') { 
 
             steps { 
@@ -109,7 +109,7 @@ println "date : " + datePart + "\ttime : " + timePart
             }
 
         } 
-        */
+        
         stage('Docker compose ')
         {
         steps {
