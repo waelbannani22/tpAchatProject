@@ -68,7 +68,7 @@ pipeline {
 
                 script { 
 
-                    dockerImage = docker.build registry + ":$BUILD_NUMBER" 
+                    dockerImage = sudo docker.build registry + ":$BUILD_NUMBER" 
 
                 }
 
@@ -84,7 +84,7 @@ pipeline {
 
                     docker.withRegistry( '', registryCredential ) { 
 
-                        dockerImage.push() 
+                       sudo  dockerImage.push() 
 
                     }
 
@@ -98,7 +98,7 @@ pipeline {
 
             steps { 
 
-                sh "docker rmi $registry:$BUILD_NUMBER" 
+                sh "sudo docker rmi $registry:$BUILD_NUMBER" 
 
             }
 
