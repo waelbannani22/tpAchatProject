@@ -38,7 +38,7 @@ println "date : " + datePart + "\ttime : " + timePart
         }
         
         }
-          stage('MVN test mock')
+          stage('MVN TEST MOCK')
         {
         steps {
         sh "mvn clean test -e  -Dtest=com.esprit.examen.services.ProduitServiceMockTest"
@@ -60,66 +60,25 @@ println "date : " + datePart + "\ttime : " + timePart
         sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar'
         }
         }
-        stage('MVN TEST')
-        {
-        steps {
-        sh 'mvn test'
-        }
-        }
+    
         stage('MVN DEPLOY')
         {
         steps {
-        sh 'mvn deploy -Dmaven.test.skip=true'
+        sh 'mvn deploy'
         }
         }
 
-          stage('Building our image') { 
-
-            steps { 
-
-                script { 
-
-                    dockerImage = docker.build registry + ":$BUILD_NUMBER" 
-
-                }
-
-            } 
-
-        }
-
-        stage('Deploy our image') { 
-
-            steps { 
-
-                script { 
-
-                    docker.withRegistry( '', registryCredential ) { 
-
-                        dockerImage.push() 
-
-                    }
-
-                } 
-
-            }
-
-        } 
-
-        stage('Cleaning up') { 
-
-            steps { 
-
-                sh "docker rmi $registry:$BUILD_NUMBER" 
-
-            }
-
-        } 
-        
         stage('Docker compose ')
         {
         steps {
         sh 'sudo docker-compose down '
         sh 'sudo docker-compose up -d'
+        }
+        }
+            stage('MVN TEST')
+        {
+        steps {
+        sh 'mvn test'
         }
         }
        
