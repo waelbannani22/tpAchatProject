@@ -1,6 +1,7 @@
 pipeline {
     agent  { docker {
-         
+             image hazem12345/tp-achat-project
+
             args '-u root'
         }
         }
