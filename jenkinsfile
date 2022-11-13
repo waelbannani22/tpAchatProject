@@ -30,18 +30,11 @@ println "date : " + datePart + "\ttime : " + timePart
 
             }
         }
-        stage('MVN CLEAN')
-        {
-        steps {
-        sh """mvn -version"""
-        sh 'mvn clean'
-        }
-        
-        }
+       
           stage('MVN test mock')
         {
         steps {
-        sh "mvn clean test -e  -Dtest=com.esprit.examen.services.FactureServiceMockTest"
+        sh "mvn clean test -e  -Dtest=com.esprit.examen.services.ProduitServiceImplTestMock"
         }
         }
         
