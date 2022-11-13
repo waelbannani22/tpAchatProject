@@ -6,16 +6,18 @@ pipeline {
         }
         }
     
+ environment { 
+       registry = "hazem12345/tp-achat-project" 
 
- options {
-    skipDefaultCheckout()
-  }
-    
+        registryCredential = 'dockerHub' 
+
+        dockerImage =  '' 
+
+    }
     stages {
         stage('Checkout GIT') {
         
             steps {
-                        checkout scm
                 git branch:'hazem',
                 url:'https://github.com/waelbannani22/tpAchatProject'
              
@@ -63,11 +65,7 @@ pipeline {
           stage('Building our image') { 
 
             steps { 
-             registry "hazem12345/tp-achat-project" 
-
-        registryCredential  'dockerHub' 
-
-        dockerImage  '' 
+      
 
                 script { 
 
