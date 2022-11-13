@@ -50,7 +50,6 @@
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<scope>test</scope>
-			<version>4.13.2</version>
 		</dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>
@@ -71,35 +70,30 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
 		</dependency>
-		<dependency>
-     <groupId>org.junit.vintage</groupId>
-     <artifactId>junit-vintage-engine</artifactId>
-     <version>5.5.2</version>
-   </dependency>
-		
 	</dependencies>
 
 	<build>
 		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-    <artifactId>maven-surefire-plugin</artifactId>
-    <version>2.22.1</version>
-				<configuration>
-				<includes>
-				<include>**/*Test.java</include>
-				</includes>
-				</configuration>
-			</plugin>
+				<plugin>
+        <artifactId>maven-resources-plugin</artifactId>
+         <version>3.0.2</version>
+           </plugin>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-			<plugin>
-				<artifactId>maven-resources-plugin</artifactId>
-				<version>3.0.2</version>
-			</plugin>
-			
+
+<plugin>
+<groupId>org.apache.maven.plugins</groupId>
+<artifactId>maven-surefire-plugin</artifactId>
+<version>2.22.1</version>
+<configuration>
+<includes>
+<include>**/*Test.java</include>
+</includes>
+</configuration>
+</plugin>
+
 		</plugins>
 	</build>
 	<distributionManagement>
