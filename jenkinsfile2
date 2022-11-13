@@ -36,9 +36,10 @@ maven 'M2_HOME'
            stage('MVN test mock')
         {
         steps {
-        sh "mvn clean test -e -DfailIfNoTests=false -Dtest=com.esprit.examen.services.FactureServiceMockTest"
+        sh "mvn clean test -e  -Dtest=com.esprit.examen.services.FactureServiceMockTest"
         }
         }
+        //-DfailIfNoTests=false
         
         
        
