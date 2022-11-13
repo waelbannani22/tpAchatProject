@@ -8,8 +8,7 @@ pipeline {
             steps {
                 git branch:'hazem',
                 url:'https://github.com/waelbannani22/tpAchatProject'
-                script{
-                }
+             
 
             }
         }
