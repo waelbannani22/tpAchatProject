@@ -30,7 +30,14 @@ println "date : " + datePart + "\ttime : " + timePart
 
             }
         }
-       
+          stage('MVN CLEAN')
+        {
+        steps {
+        sh """mvn -version"""
+        sh 'mvn clean'
+        }
+        
+        }
           stage('MVN test mock')
         {
         steps {
