@@ -9,7 +9,9 @@ pipeline {
         dockerImage =  '' 
 
     }
+       options {
             skipDefaultCheckout()
+            }
 
     stages {
         stage('Checkout GIT') {
