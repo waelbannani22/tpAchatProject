@@ -1,10 +1,5 @@
 pipeline {
-    agent  { docker {
-             image hazem12345/tp-achat-project
-
-            args '-u root'
-        }
-        }
+    agent  any
     
  environment { 
        registry = "hazem12345/tp-achat-project" 
