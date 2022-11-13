@@ -34,7 +34,7 @@ println "date : " + datePart + "\ttime : " + timePart
           stage('MVN test mock')
         {
         steps {
-        sh "mvn clean test -e  -Dtest=com.esprit.examen.services.ProduitServiceImplTestMock"
+        sh "mvn clean test -e  -Dtest=com.esprit.examen.services.ProduitServiceImplMockTest"
         }
         }
         
