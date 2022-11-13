@@ -18,7 +18,6 @@ import com.esprit.examen.entities.Stock;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class ProduitServiceImpltTest {
-	
 	@Autowired
 	IProduitService produitservice;
 	@Test
@@ -42,7 +41,7 @@ public class ProduitServiceImpltTest {
 		Produit savedProduit= produitservice.addProduit(c);
 		assertNotNull(savedProduit.getDateCreation());
 		assertNotNull(savedProduit.getDateDerniereModification());
-		assertEquals(savedProduit.getPrix(),2.5,0.000);
+		assertEquals(savedProduit.getPrix(),2.5,0.00);
 		assertNotNull(savedProduit.getCodeProduit());
 		assertNotNull(savedProduit.getLibelleProduit());
 		produitservice.deleteProduit(savedProduit.getIdProduit());	
