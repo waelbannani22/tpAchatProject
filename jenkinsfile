@@ -1,5 +1,5 @@
 pipeline {
-
+    agent any
  environment { 
 
         registry = "hazem12345/tp-achat-project" 
@@ -9,19 +9,19 @@ pipeline {
         dockerImage = '' 
 
     }
+    options {
+    skipDefaultCheckout(true)
+}
     
     stages {
         stage('Checkout GIT') {
+        
             steps {
                 git branch:'hazem',
                 url:'https://github.com/waelbannani22/tpAchatProject'
-                
+                 checkout(scm)
                 script{
-                                    Date date = new Date()
-String datePart = date.format("dd/MM/yyyy")
-String timePart = date.format("HH:mm:ss")
-
-println "date : " + datePart + "\ttime : " + timePart
+                   sudo chmod 666 /var/run/docker.sock
                 }
 
             }
