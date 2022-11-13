@@ -1,7 +1,7 @@
 pipeline {
     agent    any {
          
-            args '-u root
+            args '-u root'
         }
         environment { 
 
