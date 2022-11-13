@@ -1,15 +1,6 @@
 pipeline {
     agent any
- environment { 
-
-        registry = "hazem12345/tp-achat-project" 
-
-        registryCredential = 'dockerHub' 
-
-        dockerImage = '' 
-
-    }
-
+ 
     
     stages {
         stage('Checkout GIT') {
@@ -65,6 +56,11 @@ pipeline {
 
             steps { 
 
+        registry = "hazem12345/tp-achat-project" 
+
+        registryCredential = 'dockerHub' 
+
+        dockerImage = '' 
                 script { 
 
                     dockerImage = docker.build registry + ":$BUILD_NUMBER" 
