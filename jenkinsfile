@@ -3,6 +3,15 @@ pipeline {
          
             args '-u root
         }
+        environment { 
+
+       registry "hazem12345/tp-achat-project" 
+
+        registryCredential  'dockerHub' 
+
+        dockerImage  '' 
+
+    }
 
  options {
     skipDefaultCheckout(true)
@@ -61,11 +70,6 @@ pipeline {
 
             steps { 
 
-        registry "hazem12345/tp-achat-project" 
-
-        registryCredential  'dockerHub' 
-
-        dockerImage  '' 
                 script { 
 
                     dockerImage = docker.build registry + ":$BUILD_NUMBER" 
