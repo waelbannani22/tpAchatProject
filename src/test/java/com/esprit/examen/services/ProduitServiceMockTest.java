@@ -1,19 +1,25 @@
 package com.esprit.examen.services;
-
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
+
+import org.junit.Before;
+import org.junit.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
+
 import com.esprit.examen.entities.Produit;
 import com.esprit.examen.entities.Stock;
 import com.esprit.examen.repositories.ProduitRepository;
@@ -40,7 +46,6 @@ public class ProduitServiceMockTest {
 	}
 	};
 	@Test
-	@Order(2)
 	 void  testretrieveAllProduits()  {
 		Mockito.when(produitrepo.findAll()).thenReturn(listeproduits);
 		List<Produit> pr =produitservice.retrieveAllProduits();
@@ -48,7 +53,6 @@ public class ProduitServiceMockTest {
 		
  	}
 	@Test
-	@Order(1)
 	 void testAddProduit(){
 		Mockito.when(produitrepo.findById(Mockito.anyLong())).thenReturn(Optional.of(p));
 		Produit pr =produitservice.retrieveProduit(2L);		
@@ -61,7 +65,6 @@ public class ProduitServiceMockTest {
 		
 	}
 	@Test
-	@Order(6)
 	 void testDeleteProduit()  {
 		Mockito.when(produitrepo.findById(Mockito.anyLong())).thenReturn(Optional.of(p));
 		Produit pr =produitservice.retrieveProduit(2L);
@@ -69,7 +72,6 @@ public class ProduitServiceMockTest {
 		assertNull(produitservice.retrieveProduit(pr.getIdProduit()));
 	}
 	@Test
-	@Order(4)
 	 void testretrieveProduit() 
 	{
 		Mockito.when(produitrepo.findById(Mockito.anyLong())).thenReturn(Optional.of(p));
@@ -80,7 +82,6 @@ public class ProduitServiceMockTest {
 		
 	}	
 	@Test
-	@Order(3)
 	 void testupdateProduit( ) {
 		Mockito.when(produitrepo.findById(Mockito.anyLong())).thenReturn(Optional.of(p));
 		Produit pr =produitservice.retrieveProduit(2L);   
@@ -88,7 +89,6 @@ public class ProduitServiceMockTest {
 		assertThat(pr.getLibelleProduit()).isEqualTo("produit3");
 			}
 	@Test
-	@Order(5)
 	@Transactional
 	 void testassignProduitToStock()   {
 		Mockito.when(produitrepo.findById(Mockito.anyLong())).thenReturn(Optional.of(p));
