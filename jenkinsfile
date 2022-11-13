@@ -1,7 +1,8 @@
 pipeline {
-    agent   docker {
+    agent  { docker {
          
             args '-u root'
+        }
         }
     
 
