@@ -17,7 +17,6 @@ pipeline {
             steps {
                 git branch:'hazem',
                 url:'https://github.com/waelbannani22/tpAchatProject'
-                 checkout(scm)
                 script{
                    sudo chmod 666 /var/run/docker.sock
                 }
