@@ -45,7 +45,7 @@ maven 'M2_HOME'
               stage('MVN INSTALL')
         {
         steps {
-        sh 'mvn package -Denv="test"'
+        sh 'mvn package '
         }
         }
         
