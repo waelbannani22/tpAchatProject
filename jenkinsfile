@@ -55,11 +55,11 @@ pipeline {
 
             steps { 
 
-        registry = "hazem12345/tp-achat-project" 
+        registry "hazem12345/tp-achat-project" 
 
-        registryCredential = 'dockerHub' 
+        registryCredential  'dockerHub' 
 
-        dockerImage = '' 
+        dockerImage  '' 
                 script { 
 
                     dockerImage = docker.build registry + ":$BUILD_NUMBER" 
