@@ -20,7 +20,7 @@ import com.esprit.examen.repositories.ProduitRepository;
 import com.esprit.examen.repositories.StockRepository;
 
 @ExtendWith(MockitoExtension.class)
-class ProduitServiceImplMockTest {
+public class ProduitServiceMockTest {
 
     @Mock
 	StockRepository stockrepo;
