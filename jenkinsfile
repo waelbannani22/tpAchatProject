@@ -1,23 +1,32 @@
 pipeline {
-    agent  any
-    
+    agent any
+tools 
+{
+maven 'M2_HOME'
+}
  environment { 
-       registry = "hazem12345/tp-achat-project" 
+
+        registry = "hazem12345/tp-achat-project" 
 
         registryCredential = 'dockerHub' 
 
-        dockerImage =  '' 
+        dockerImage = '' 
 
     }
- 
-
+    
     stages {
         stage('Checkout GIT') {
-        
             steps {
                 git branch:'hazem',
                 url:'https://github.com/waelbannani22/tpAchatProject'
-             
+                
+                script{
+                                    Date date = new Date()
+String datePart = date.format("dd/MM/yyyy")
+String timePart = date.format("HH:mm:ss")
+
+println "date : " + datePart + "\ttime : " + timePart
+                }
 
             }
         }
@@ -62,11 +71,10 @@ pipeline {
           stage('Building our image') { 
 
             steps { 
-      
 
                 script { 
 
-                    dockerImage = sudo docker.build registry + ":$BUILD_NUMBER" 
+                    dockerImage = docker.build registry + ":$BUILD_NUMBER" 
 
                 }
 
@@ -82,7 +90,7 @@ pipeline {
 
                     docker.withRegistry( '', registryCredential ) { 
 
-                       sudo  dockerImage.push() 
+                        dockerImage.push() 
 
                     }
 
@@ -96,7 +104,7 @@ pipeline {
 
             steps { 
 
-                sh "sudo docker rmi $registry:$BUILD_NUMBER" 
+                sh "docker rmi $registry:$BUILD_NUMBER" 
 
             }
 
@@ -127,4 +135,3 @@ pipeline {
     }
      
 }
-
