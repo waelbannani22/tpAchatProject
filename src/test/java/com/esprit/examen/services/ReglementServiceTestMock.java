@@ -89,4 +89,6 @@ public void  getChiffreAffaireEntreDeuxDate()throws ParseException {
   SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
    Date datestart = dateFormat.parse("20/09/2000");
    Date datefin = dateFormat.parse("29/09/2000");
+  Mockito.when(reglementRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(R));
+Mockito.when(facturerepo.findById(Mockito.anyLong())).thenReturn(Optional.of(s));
 }
