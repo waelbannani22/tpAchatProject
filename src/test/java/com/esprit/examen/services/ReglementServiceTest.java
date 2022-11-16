@@ -31,5 +31,7 @@ ReglementRepository reglementRepository;
 @Test
 public void retrieveAllReglements() throws ParseException {
 SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+    Date Date1 = dateFormat.parse("25/09/2000");
+Reglement R = new Reglement(22, 22, false, Date1);
   }
   
