@@ -54,5 +54,12 @@ maven 'M2_HOME'
 
         
     }
+    post{
+        always{
+            mail to: "rami.rihani@esprit.tn",
+            subject: "Jenkins build",
+            body: "build finished"
+        }
+    }
     
 }
