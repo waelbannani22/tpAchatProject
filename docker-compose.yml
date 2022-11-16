@@ -32,13 +32,6 @@ services:
       - .m2:/root/.m2
     stdin_open: true
     tty: true
-  angular:
-    image: hazem12345/angularfront
-    container_name: angular
-    ports:
-      - 4200:80
-    depends_on:
-      - app    
 networks:
   springmysql-net:
 volumes:
