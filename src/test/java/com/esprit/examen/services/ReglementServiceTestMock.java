@@ -44,4 +44,5 @@ Facture s = new Facture( new Date(),  new Date(), false, null, null, null);
   @Mock
 ReglementRepository reglementRepository;
 
-  @InjectMocks
+  @InjectMocksReglementServiceImpl reglementservice;
+Reglement R = new Reglement(22, 22, true, new Date());
