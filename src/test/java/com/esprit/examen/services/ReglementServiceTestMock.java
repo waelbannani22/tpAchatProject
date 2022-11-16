@@ -27,3 +27,4 @@ import com.esprit.examen.entities.Produit;
 import com.esprit.examen.entities.Reglement;
 import com.esprit.examen.entities.Stock;
 import com.esprit.examen.repositories.FactureRepository;
+import com.esprit.examen.repositories.ProduitRepository;
