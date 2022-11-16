@@ -75,4 +75,6 @@ assertNull(reglementservice.retrieveReglement(id));
     }
   @Test
   public void  getChiffreAffaireEntreDeuxDate()throws ParseException {
+    SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+   Date datestart = dateFormat.parse("20/09/2000");
 }
