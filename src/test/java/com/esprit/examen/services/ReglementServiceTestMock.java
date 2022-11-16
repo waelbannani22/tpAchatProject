@@ -66,4 +66,5 @@ Reglement R= reglementservice.addReglement(pr);
 assertNotNull(R.getMontantPaye()); 
   assertNotNull(R.getMontantRestant());
   assertNotNull(R.getPayee());
+  assertNotNull(R.getDateReglement());
 }
