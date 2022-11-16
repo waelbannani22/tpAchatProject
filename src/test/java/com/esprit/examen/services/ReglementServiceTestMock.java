@@ -5,7 +5,6 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.jupiter.api.Assertions.*;
 
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -21,7 +20,6 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.transaction.annotation.Transactional;
 
-
 import com.esprit.examen.entities.Facture;
 import com.esprit.examen.entities.Produit;
 import com.esprit.examen.entities.Reglement;
@@ -31,20 +29,18 @@ import com.esprit.examen.repositories.ProduitRepository;
 import com.esprit.examen.repositories.ReglementRepository;
 import com.esprit.examen.repositories.StockRepository;
 
-
 @ExtendWith(MockitoExtension.class)
 public class ReglementServiceTestMock {
-  
-   @Mock
+
+    @Mock
 FactureRepository facturerepo;
-  
-   @InjectMocks
+    @InjectMocks
     FactureServiceImpl factureservice;
 Facture s = new Facture( new Date(),  new Date(), false, null, null, null);
-  @Mock
+@Mock
 ReglementRepository reglementRepository;
-
-  @InjectMocksReglementServiceImpl reglementservice;
+@InjectMocks
+     ReglementServiceImpl reglementservice;
 Reglement R = new Reglement(22, 22, true, new Date());
 @SuppressWarnings("serial")
 ArrayList<Reglement> listereglements = new ArrayList<Reglement>() {
@@ -58,44 +54,58 @@ public void retrieveAllReglements() throws ParseException {
 Mockito.when(reglementRepository.findAll()).thenReturn(listereglements);
 List<Reglement> pr =reglementservice.retrieveAllReglements();
 assertNotNull(pr);
+  }
+
+
 @Test
 public void addReglement() throws ParseException {
 Mockito.when(reglementRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(R));
 Reglement pr =reglementservice.retrieveReglement(2L);
 Reglement R= reglementservice.addReglement(pr);
-assertNotNull(R.getMontantPaye()); 
-  assertNotNull(R.getMontantRestant());
-  assertNotNull(R.getPayee());
-  assertNotNull(R.getDateReglement());
-  }
-  @Test
+assertNotNull(R.getMontantPaye());
+assertNotNull(R.getMontantRestant());
+assertNotNull(R.getPayee());
+assertNotNull(R.getDateReglement());
+}
+
+@Test
 public void retrieveReglement() throws ParseException {
 Mockito.when(reglementRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(R));
-  Reglement pr =reglementservice.retrieveReglement(2L);
-assertNotNull(pr);
-  }
-   @Test
-  public void retrieveReglementByFacture()throws ParseException {
-    Mockito.when(reglementRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(R));
-Mockito.when(facturerepo.findById(Mockito.anyLong())).thenReturn(Optional.of(s));
-    Facture f = factureservice.retrieveFacture(1l);
+
 Reglement pr =reglementservice.retrieveReglement(2L);
-    pr.setFacture(s);
-    Reglement rep = reglementservice.addReglement(pr);
+assertNotNull(pr);
+
+}
+
+ @Test
+public void retrieveReglementByFacture()throws ParseException {
+
+
+
+
+Mockito.when(reglementRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(R));
+Mockito.when(facturerepo.findById(Mockito.anyLong())).thenReturn(Optional.of(s));
+Facture f = factureservice.retrieveFacture(1l);
+Reglement pr =reglementservice.retrieveReglement(2L);
+pr.setFacture(s);
+Reglement rep = reglementservice.addReglement(pr);
 assertNotNull(reglementRepository.retrieveReglementByFacture(f.getIdFacture()));
-    }
-  @Test
+}
+
+@Test
 public void  getChiffreAffaireEntreDeuxDate()throws ParseException {
-  SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
    Date datestart = dateFormat.parse("20/09/2000");
    Date datefin = dateFormat.parse("29/09/2000");
-  Mockito.when(reglementRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(R));
+
+Mockito.when(reglementRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(R));
 Mockito.when(facturerepo.findById(Mockito.anyLong())).thenReturn(Optional.of(s));
-  Facture f = factureservice.retrieveFacture(1l);
-  Reglement pr =reglementservice.retrieveReglement(2L);
-  pr.setFacture(s);
-  Reglement rep = reglementservice.addReglement(pr);
-     reglementservice.addReglement(R);
-   assertNotNull(reglementRepository.getChiffreAffaireEntreDeuxDate(datestart, datefin));
+Facture f = factureservice.retrieveFacture(1l);
+Reglement pr =reglementservice.retrieveReglement(2L);
+pr.setFacture(s);
+Reglement rep = reglementservice.addReglement(pr);
+    reglementservice.addReglement(R);
+    assertNotNull(reglementRepository.getChiffreAffaireEntreDeuxDate(datestart, datefin));
+   
 }
-  }
+}
