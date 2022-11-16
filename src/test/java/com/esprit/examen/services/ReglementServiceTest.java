@@ -78,4 +78,5 @@ assertNull(reglementservice.retrieveReglement(id));
     SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
    Date datestart = dateFormat.parse("20/09/2000");
      Date datefin = dateFormat.parse("29/09/2000");
+    Date Date1 = dateFormat.parse("25/09/2000");
 }
