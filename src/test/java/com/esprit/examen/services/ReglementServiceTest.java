@@ -28,6 +28,8 @@ public class ReglementServiceTest {
 IReglementService reglementservice;
   @Autowired
 ReglementRepository reglementRepository;
-
+@Test
+public void retrieveAllReglements() throws ParseException {
+SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
   }
   
