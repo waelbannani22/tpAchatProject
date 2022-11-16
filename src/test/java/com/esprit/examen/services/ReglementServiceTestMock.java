@@ -84,4 +84,6 @@ Reglement pr =reglementservice.retrieveReglement(2L);
     Reglement rep = reglementservice.addReglement(pr);
 assertNotNull(reglementRepository.retrieveReglementByFacture(f.getIdFacture()));
     }
+  @Test
+public void  getChiffreAffaireEntreDeuxDate()throws ParseException {
 }
