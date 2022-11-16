@@ -91,4 +91,5 @@ public void  getChiffreAffaireEntreDeuxDate()throws ParseException {
    Date datefin = dateFormat.parse("29/09/2000");
   Mockito.when(reglementRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(R));
 Mockito.when(facturerepo.findById(Mockito.anyLong())).thenReturn(Optional.of(s));
+  Facture f = factureservice.retrieveFacture(1l);
 }
