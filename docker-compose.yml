@@ -53,10 +53,9 @@ services:
       - prometheus-data:/prometheus
     command: --web.enable-lifecycle  --config.file=/etc/prometheus/prometheus.yml
 
-
-volumes:
-  prometheus-data:  
+  
 networks:
   springmysql-net:
 volumes:
+  prometheus-data:  
   db:
