@@ -86,3 +86,4 @@ assertNull(reglementservice.retrieveReglement(id));
     reglementservice.addReglement(R);
      assertNotNull(reglementRepository.getChiffreAffaireEntreDeuxDate(datestart, datefin));
 }
+}
