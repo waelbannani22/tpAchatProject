@@ -1,4 +1,3 @@
-
 package com.esprit.examen.services;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.*;
@@ -26,7 +25,7 @@ import com.esprit.examen.repositories.ReglementRepository;
 public class ReglementServiceTest {
 @Autowired
 IReglementService reglementservice;
-  @Autowired
+@Autowired
 ReglementRepository reglementRepository;
 @Test
 public void retrieveAllReglements() throws ParseException {
@@ -53,7 +52,7 @@ assertNotNull(savedReglement.getPayee());
 assertNotNull(savedReglement.getDateReglement());
 }
 
-  @Test
+@Test
 public void retrieveReglement() throws ParseException {
 SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
    Date Date1 = dateFormat.parse("25/09/2000");
@@ -63,27 +62,31 @@ Reglement R = new Reglement(22, 22, false, Date1);
 reglementservice.addReglement(R);
 assertNull(reglementservice.retrieveReglement(id));
 }
-   @Test
-  public void retrieveReglementByFacture()throws ParseException {
-   SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+
+     @Test
+public void retrieveReglementByFacture()throws ParseException {
+    SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
    Date dateNaissance = dateFormat.parse("25/09/2000");
     Facture s = new Facture(dateNaissance, dateNaissance, false, null, null, null);
      Date Date1 = dateFormat.parse("25/09/2000");
     Reglement R = new Reglement(22, 22, false, Date1);
     R.setFacture(s);
-     assertNotNull(reglementRepository.retrieveReglementByFacture(s.getIdFacture()));
-    }
-  @Test
-  public void  getChiffreAffaireEntreDeuxDate()throws ParseException {
-    SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+    assertNotNull(reglementRepository.retrieveReglementByFacture(s.getIdFacture()));
+   
+}
+
+@Test
+public void  getChiffreAffaireEntreDeuxDate()throws ParseException {
+SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
    Date datestart = dateFormat.parse("20/09/2000");
-     Date datefin = dateFormat.parse("29/09/2000");
-    Date Date1 = dateFormat.parse("25/09/2000");
+   Date datefin = dateFormat.parse("29/09/2000");
+ Date Date1 = dateFormat.parse("25/09/2000");
     Reglement R = new Reglement(22, 22, true, Date1);
-     Date dateNaissance = dateFormat.parse("25/09/2000");
+       Date dateNaissance = dateFormat.parse("25/09/2000");
     Facture s = new Facture(dateNaissance, dateNaissance, false, null, null, null);
-     R.setFacture(s);
+    R.setFacture(s);
     reglementservice.addReglement(R);
-     assertNotNull(reglementRepository.getChiffreAffaireEntreDeuxDate(datestart, datefin));
+    assertNotNull(reglementRepository.getChiffreAffaireEntreDeuxDate(datestart, datefin));
+   
 }
 }
