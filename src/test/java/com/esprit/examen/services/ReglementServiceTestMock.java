@@ -68,4 +68,7 @@ assertNotNull(R.getMontantPaye());
   assertNotNull(R.getPayee());
   assertNotNull(R.getDateReglement());
   }
+  @Test
+public void retrieveReglement() throws ParseException {
+Mockito.when(reglementRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(R));
 }
