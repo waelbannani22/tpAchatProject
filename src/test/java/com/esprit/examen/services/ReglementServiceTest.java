@@ -72,4 +72,5 @@ assertNull(reglementservice.retrieveReglement(id));
     Reglement R = new Reglement(22, 22, false, Date1);
     R.setFacture(s);
      assertNotNull(reglementRepository.retrieveReglementByFacture(s.getIdFacture()));
+    }
 }
