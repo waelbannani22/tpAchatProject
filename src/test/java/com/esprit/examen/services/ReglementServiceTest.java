@@ -74,4 +74,5 @@ assertNull(reglementservice.retrieveReglement(id));
      assertNotNull(reglementRepository.retrieveReglementByFacture(s.getIdFacture()));
     }
   @Test
+  public void  getChiffreAffaireEntreDeuxDate()throws ParseException {
 }
