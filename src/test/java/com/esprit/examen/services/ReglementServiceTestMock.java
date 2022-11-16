@@ -81,4 +81,6 @@ Mockito.when(facturerepo.findById(Mockito.anyLong())).thenReturn(Optional.of(s))
     Facture f = factureservice.retrieveFacture(1l);
 Reglement pr =reglementservice.retrieveReglement(2L);
     pr.setFacture(s);
+    Reglement rep = reglementservice.addReglement(pr);
+assertNotNull(reglementRepository.retrieveReglementByFacture(f.getIdFacture()));
 }
