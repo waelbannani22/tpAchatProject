@@ -58,4 +58,10 @@ public void retrieveAllReglements() throws ParseException {
 Mockito.when(reglementRepository.findAll()).thenReturn(listereglements);
 List<Reglement> pr =reglementservice.retrieveAllReglements();
 assertNotNull(pr);
-  }
+@Test
+public void addReglement() throws ParseException {
+Mockito.when(reglementRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(R));
+Reglement pr =reglementservice.retrieveReglement(2L);
+Reglement R= reglementservice.addReglement(pr);
+assertNotNull(R.getMontantPaye()); 
+}
