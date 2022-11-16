@@ -39,4 +39,14 @@ assertNotNull(savedReglement.getMontantRestant());
 assertNotNull(savedReglement.getPayee());
   assertNotNull(savedReglement.getDateReglement());
   }
+  @Test
+public void retrieveReglement() throws ParseException {
+SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+   Date Date1 = dateFormat.parse("25/09/2000");
+   Long id =(long)0;
+Reglement R = new Reglement(22, 22, false, Date1);
+
+reglementservice.addReglement(R);
+assertNull(reglementservice.retrieveReglement(id));
+}
 }
