@@ -28,7 +28,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 @RunWith(SpringRunner.class)
 
 
-public class OperateurServicelmplTest {
+public class OperateurServicelmplMocksTest {
 
     @Mock
     private OperateurRepository operateurRepository;
