@@ -25,3 +25,4 @@ import org.springframework.transaction.annotation.Transactional;
 import com.esprit.examen.entities.Facture;
 import com.esprit.examen.entities.Produit;
 import com.esprit.examen.entities.Reglement;
+import com.esprit.examen.entities.Stock;
