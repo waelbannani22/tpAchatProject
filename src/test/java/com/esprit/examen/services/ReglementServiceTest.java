@@ -84,5 +84,5 @@ assertNull(reglementservice.retrieveReglement(id));
     Facture s = new Facture(dateNaissance, dateNaissance, false, null, null, null);
      R.setFacture(s);
     reglementservice.addReglement(R);
-     assertNotNull(reglementRepository.getChiffreAffaireEntreDeuxDate(datestart, datefin))
+     assertNotNull(reglementRepository.getChiffreAffaireEntreDeuxDate(datestart, datefin));
 }
