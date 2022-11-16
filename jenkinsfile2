@@ -57,19 +57,19 @@ maven 'M2_HOME'
         }
         }
        //-DskipTests 
-       /*
+      
       stage('MVN SONARQUBE')
         {
         steps{
         sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=esprit'
         }
         }
-        */
+        
         stage('Docker compose ')
         {
         steps {
         sh 'sudo docker-compose down '
-        sh 'sudo docker-compose up '
+        sh 'sudo docker-compose up -d '
         }
         }
         /*
@@ -84,6 +84,13 @@ maven 'M2_HOME'
 
 
        
+    }
+     post{
+        always{
+            mail to: "wael.bannani@esprit.tn",
+            subject: "Jenkins",
+            body: "build finished"
+        }
     }
     
     
