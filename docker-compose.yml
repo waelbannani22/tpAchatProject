@@ -45,17 +45,18 @@ services:
    
   
   prometheus:
-    image: prom/prometheus:v2.30.3
+    image: prom/prometheus
+    container_name: prometheus
+    volumes:
+      - /tmp/prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./data:/prometheus/data
+    command:
+      - '--storage.tsdb.path=/prometheus/data'
     ports:
       - 9090:9090
-    volumes:
-      - ./prometheus:/etc/prometheus
-      - prometheus-data:/prometheus
-    command: --web.enable-lifecycle  --config.file=/tmp/prometheus.yml
 
   
 networks:
   springmysql-net:
-volumes:
-  prometheus-data:  
+volumes:  
   db:
