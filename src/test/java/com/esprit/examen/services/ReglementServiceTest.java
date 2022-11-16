@@ -53,14 +53,14 @@ assertNotNull(savedReglement.getPayee());
 assertNotNull(savedReglement.getDateReglement());
 }
 
-   @Test
-public void retrieveReglementByFacture()throws ParseException {
-  SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-   Date dateNaissance = dateFormat.parse("25/09/2000");
-    Facture s = new Facture(dateNaissance, dateNaissance, false, null, null, null);
-     Date Date1 = dateFormat.parse("25/09/2000");
-    Reglement R = new Reglement(22, 22, false, Date1);
-   R.setFacture(s);
-   assertNotNull(reglementRepository.retrieveReglementByFacture(s.getIdFacture()));
+  @Test
+public void retrieveReglement() throws ParseException {
+SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+   Date Date1 = dateFormat.parse("25/09/2000");
+   Long id =(long)0;
+Reglement R = new Reglement(22, 22, false, Date1);
+
+reglementservice.addReglement(R);
+assertNull(reglementservice.retrieveReglement(id));
 }
 }
