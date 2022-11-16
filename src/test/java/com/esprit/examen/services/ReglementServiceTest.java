@@ -26,6 +26,8 @@ import com.esprit.examen.repositories.ReglementRepository;
 public class ReglementServiceTest {
 @Autowired
 IReglementService reglementservice;
+  @Autowired
+ReglementRepository reglementRepository;
 
   }
   
