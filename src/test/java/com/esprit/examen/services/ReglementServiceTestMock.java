@@ -34,3 +34,6 @@ import com.esprit.examen.repositories.StockRepository;
 
 @ExtendWith(MockitoExtension.class)
 public class ReglementServiceTestMock {
+  
+   @Mock
+FactureRepository facturerepo;
