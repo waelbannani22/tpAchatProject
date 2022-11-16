@@ -14,10 +14,10 @@ maven 'M2_HOME'
 
     }
     
-    stages {
+        stages {
         stage('Checkout GIT') {
             steps {
-                git branch:'rania',
+                git branch:'hazem',
                 url:'https://github.com/waelbannani22/tpAchatProject'
                 
                 script{
@@ -30,7 +30,7 @@ println "date : " + datePart + "\ttime : " + timePart
 
             }
         }
-        stage('MVN CLEAN')
+          stage('MVN CLEAN')
         {
         steps {
         sh """mvn -version"""
@@ -38,6 +38,15 @@ println "date : " + datePart + "\ttime : " + timePart
         }
         
         }
+          stage('MVN TEST MOCK')
+        {
+        steps {
+        sh "mvn clean test -e  -Dtest=com.esprit.examen.services.ProduitServiceMockTest"
+        }
+        }
+        
+        
+       
         stage('MVN PACKAGE')
         {
         steps {
@@ -51,16 +60,11 @@ println "date : " + datePart + "\ttime : " + timePart
         sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=sonar'
         }
         }
-        stage('MVN TEST')
-        {
-        steps {
-        sh 'mvn test'
-        }
-        }
+    
         stage('MVN DEPLOY')
         {
         steps {
-        sh 'mvn deploy -Dmaven.test.skip=true'
+        sh 'mvn deploy'
         }
         }
 
@@ -109,14 +113,22 @@ println "date : " + datePart + "\ttime : " + timePart
         stage('Docker compose ')
         {
         steps {
-        sh 'docker-compose down '
-        sh 'docker-compose up -d'
+        sh 'sudo docker-compose down '
+        sh 'sudo docker-compose up -d'
+        }
+        }
+            stage('MVN TEST')
+        {
+        steps {
+        sh 'mvn test'
         }
         }
        
        
     }
+       
+    }
 
      
-}
+
 
