@@ -2,6 +2,8 @@ package com.esprit.examen.entities;
 
 import java.io.Serializable;
 import java.util.Date;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,24 +24,24 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Reglement implements Serializable{
 private static final long serialVersionUID = 1L;
-	@Id
+
+@Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
+private Long idReglement;
+private float montantPaye;
+private float montantRestant;
+private Boolean payee;
+@Temporal(TemporalType.DATE)
+private Date dateReglement;
+@ManyToOne(cascade=CascadeType.ALL)
+@JsonIgnore
+private Facture facture;
+public Reglement( float montantPaye, float montantRestant, Boolean payee, Date dateReglement) {
+super();
+this.montantPaye = montantPaye;
+this.montantRestant = montantRestant;
+this.payee = payee;
+this.dateReglement = dateReglement;
+}
 
-
-
-public class Reglement implements Serializable{
-	private static final long serialVersionUID = 1L;
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long idReglement;
-	private float montantPaye;
-	private float montantRestant;
-	private Boolean payee;
-	@Temporal(TemporalType.DATE)
-	private Date dateReglement;
-	@ManyToOne
-	@JsonIgnore
-	private Facture facture;
-	
 }
