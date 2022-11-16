@@ -98,3 +98,4 @@ Mockito.when(facturerepo.findById(Mockito.anyLong())).thenReturn(Optional.of(s))
      reglementservice.addReglement(R);
    assertNotNull(reglementRepository.getChiffreAffaireEntreDeuxDate(datestart, datefin));
 }
+  }
