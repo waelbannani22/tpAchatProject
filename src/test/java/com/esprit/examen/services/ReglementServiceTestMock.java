@@ -83,4 +83,5 @@ Reglement pr =reglementservice.retrieveReglement(2L);
     pr.setFacture(s);
     Reglement rep = reglementservice.addReglement(pr);
 assertNotNull(reglementRepository.retrieveReglementByFacture(f.getIdFacture()));
+    }
 }
