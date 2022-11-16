@@ -64,6 +64,6 @@ reglementservice.addReglement(R);
 assertNull(reglementservice.retrieveReglement(id));
 }
    @Test
-  
+  public void retrieveReglementByFacture()throws ParseException {
   
 }
