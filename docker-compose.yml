@@ -43,17 +43,7 @@ services:
     depends_on:
       - app 
    
-  
-  prometheus:
-    image: prom/prometheus
-    container_name: prometheus
-    volumes:
-      - /tmp/prometheus.yml:/etc/prometheus/prometheus.yml
-      - ./data:/prometheus/data
-    command:
-      - '--storage.tsdb.path=/prometheus/data'
-    ports:
-      - 9090:9090
+
 
   
 networks:
