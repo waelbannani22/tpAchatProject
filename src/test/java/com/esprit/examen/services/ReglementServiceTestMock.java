@@ -73,4 +73,5 @@ public void retrieveReglement() throws ParseException {
 Mockito.when(reglementRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(R));
   Reglement pr =reglementservice.retrieveReglement(2L);
 assertNotNull(pr);
+  }
 }
