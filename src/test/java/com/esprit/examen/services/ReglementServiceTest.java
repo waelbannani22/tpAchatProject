@@ -59,3 +59,4 @@ public void retrieveReglementByFacture()throws ParseException {
    R.setFacture(s);
    assertNotNull(reglementRepository.retrieveReglementByFacture(s.getIdFacture()));
 }
+}
