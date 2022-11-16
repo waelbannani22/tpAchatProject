@@ -20,6 +20,12 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+
+@Entity
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Reglement implements Serializable{
 	private static final long serialVersionUID = 1L;
 
