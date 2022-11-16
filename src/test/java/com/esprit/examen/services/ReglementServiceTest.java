@@ -31,24 +31,28 @@ ReglementRepository reglementRepository;
 @Test
 public void retrieveAllReglements() throws ParseException {
 SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-    Date Date1 = dateFormat.parse("25/09/2000");
+Date Date1 = dateFormat.parse("25/09/2000");
+List<Reglement> reglements = (List<Reglement>) reglementservice.retrieveAllReglements();
+int expected = reglements.size();
 Reglement R = new Reglement(22, 22, false, Date1);
-  Reglement savedReglement= reglementservice.addReglement(R);
+Reglement reglement = reglementservice.addReglement(R);
+assertEquals(expected + 1, reglementservice.retrieveAllReglements().size());
+reglementservice.retrieveReglement(reglement.getIdReglement());
+}
+
+
+    @Test
+public void addReglement() throws ParseException {
+   SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+   Date Date1 = dateFormat.parse("25/09/2000");
+Reglement R = new Reglement(22, 22, false, Date1);
+Reglement savedReglement= reglementservice.addReglement(R);
 assertNotNull(savedReglement.getMontantPaye());
 assertNotNull(savedReglement.getMontantRestant());
 assertNotNull(savedReglement.getPayee());
-  assertNotNull(savedReglement.getDateReglement());
-  }
-  @Test
-public void retrieveReglement() throws ParseException {
-SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-   Date Date1 = dateFormat.parse("25/09/2000");
-   Long id =(long)0;
-Reglement R = new Reglement(22, 22, false, Date1);
-
-reglementservice.addReglement(R);
-assertNull(reglementservice.retrieveReglement(id));
+assertNotNull(savedReglement.getDateReglement());
 }
+
    @Test
 public void retrieveReglementByFacture()throws ParseException {
   SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
