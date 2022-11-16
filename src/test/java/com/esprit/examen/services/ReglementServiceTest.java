@@ -77,4 +77,5 @@ assertNull(reglementservice.retrieveReglement(id));
   public void  getChiffreAffaireEntreDeuxDate()throws ParseException {
     SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
    Date datestart = dateFormat.parse("20/09/2000");
+     Date datefin = dateFormat.parse("29/09/2000");
 }
