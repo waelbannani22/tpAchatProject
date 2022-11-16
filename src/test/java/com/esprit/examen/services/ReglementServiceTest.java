@@ -39,4 +39,4 @@ assertNotNull(savedReglement.getMontantRestant());
 assertNotNull(savedReglement.getPayee());
   assertNotNull(savedReglement.getDateReglement());
   }
-  
+}
