@@ -65,5 +65,8 @@ assertNull(reglementservice.retrieveReglement(id));
 }
    @Test
   public void retrieveReglementByFacture()throws ParseException {
-  
+   SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+   Date dateNaissance = dateFormat.parse("25/09/2000");
+    Facture s = new Facture(dateNaissance, dateNaissance, false, null, null, null);
+     Date Date1 = dateFormat.parse("25/09/2000");
 }
