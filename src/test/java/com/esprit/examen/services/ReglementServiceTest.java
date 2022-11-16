@@ -37,5 +37,6 @@ Reglement R = new Reglement(22, 22, false, Date1);
 assertNotNull(savedReglement.getMontantPaye());
 assertNotNull(savedReglement.getMontantRestant());
 assertNotNull(savedReglement.getPayee());
+  assertNotNull(savedReglement.getDateReglement());
   }
   
