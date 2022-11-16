@@ -64,4 +64,5 @@ Mockito.when(reglementRepository.findById(Mockito.anyLong())).thenReturn(Optiona
 Reglement pr =reglementservice.retrieveReglement(2L);
 Reglement R= reglementservice.addReglement(pr);
 assertNotNull(R.getMontantPaye()); 
+  assertNotNull(R.getMontantRestant());
 }
