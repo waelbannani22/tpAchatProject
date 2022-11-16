@@ -46,3 +46,16 @@ ReglementRepository reglementRepository;
 
   @InjectMocksReglementServiceImpl reglementservice;
 Reglement R = new Reglement(22, 22, true, new Date());
+@SuppressWarnings("serial")
+ArrayList<Reglement> listereglements = new ArrayList<Reglement>() {
+{
+add( new Reglement(25, 25, true, new Date()));
+add( new Reglement(24, 24, true, new Date()));
+}
+};
+@Test
+public void retrieveAllReglements() throws ParseException {
+Mockito.when(reglementRepository.findAll()).thenReturn(listereglements);
+List<Reglement> pr =reglementservice.retrieveAllReglements();
+assertNotNull(pr);
+  }
