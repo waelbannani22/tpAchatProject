@@ -82,4 +82,5 @@ assertNull(reglementservice.retrieveReglement(id));
     Reglement R = new Reglement(22, 22, true, Date1);
      Date dateNaissance = dateFormat.parse("25/09/2000");
     Facture s = new Facture(dateNaissance, dateNaissance, false, null, null, null);
+     R.setFacture(s);
 }
