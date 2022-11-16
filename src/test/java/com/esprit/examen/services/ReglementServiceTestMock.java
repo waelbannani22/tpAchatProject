@@ -41,3 +41,5 @@ FactureRepository facturerepo;
    @InjectMocks
     FactureServiceImpl factureservice;
 Facture s = new Facture( new Date(),  new Date(), false, null, null, null);
+  @Mock
+ReglementRepository reglementRepository;
