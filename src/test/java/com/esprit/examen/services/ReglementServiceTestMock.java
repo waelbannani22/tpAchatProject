@@ -76,4 +76,6 @@ assertNotNull(pr);
   }
    @Test
   public void retrieveReglementByFacture()throws ParseException {
+    Mockito.when(reglementRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(R));
+Mockito.when(facturerepo.findById(Mockito.anyLong())).thenReturn(Optional.of(s));
 }
