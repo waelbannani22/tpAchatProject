@@ -35,7 +35,12 @@ maven 'M2_HOME'
         
         }
        
-        
+              stage('MVN test mock')
+        {
+        steps {
+        sh "mvn clean test -e  -Dtest=com.esprit.examen.services.OperateurServicelmplMocksTest"
+        }
+        }
               stage('MVN INSTALL')
         {
         steps {
@@ -106,7 +111,12 @@ maven 'M2_HOME'
         }
         }
         
-       
+             stage('MVN test JUNIT')
+        {
+        steps {
+        sh 'mvn  test'
+        }
+        }
 
 
         
