@@ -8,6 +8,7 @@ import com.esprit.examen.entities.Operateur;
 import com.esprit.examen.repositories.OperateurRepository;
 
 @Service
+
 public class OperateurServiceImpl implements IOperateurService {
 
 	@Autowired
