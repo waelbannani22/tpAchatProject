@@ -57,7 +57,7 @@ maven 'M2_HOME'
         }
         }
        //-DskipTests 
-      /*
+      
       stage('MVN SONARQUBE')
         {
         steps{
@@ -105,7 +105,7 @@ maven 'M2_HOME'
             }
 
         } 
-        */
+       
         stage('Docker compose ')
         {
         steps {
