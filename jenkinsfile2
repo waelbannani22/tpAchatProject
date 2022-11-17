@@ -117,7 +117,7 @@ maven 'M2_HOME'
             stage('MVN test JUNIT')
         {
         steps {
-        sh 'mvn  test  '
+        sh 'mvn  test -DskipTests '
         }
         }
         
