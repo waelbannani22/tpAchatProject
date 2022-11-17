@@ -1,10 +1,12 @@
 package com.esprit.examen.services;
 
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -61,7 +63,29 @@ public class FactureServiceMockTest {
 		List<Facture> fac = factureService.retrieveAllFactures();
 		assertNotNull(fac);
 	}
-	
+	@Test
+	public void addFacturesMock() {
+		Mockito.when(factureRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(f));
+		Facture fa = factureService.retrieveFacture(2L);
+		factureService.cancelFacture(fa.getIdFacture());
+		assertNull(factureService.retrieveFacture(fa.getIdFacture()));
+		
+	}
+	@Test
+	public void retrieveFactureMock() {
+		Mockito.when(factureRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(f));
+		Facture fa = factureService.retrieveFacture(2L);
+		assertNotNull(fa);
+		
+	}
+	@Test
+	public void deleteFactureMock() {
+		Mockito.when(factureRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(f));
+		Facture fa = factureService.retrieveFacture(2L);
+		factureService.cancelFacture(fa.getIdFacture());
+		assertNull(factureService.retrieveFacture(fa.getIdFacture()));
+		
+	}
 	
 
 }
