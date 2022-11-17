@@ -4,6 +4,16 @@ tools
 {
 maven 'M2_HOME'
 }
+ environment { 
+
+        registry = "ramirihani/tpachat" 
+
+        registryCredential = 'DockerHub' 
+        
+            
+        dockerImage = '' 
+
+    }
 
     
     stages {
@@ -38,6 +48,53 @@ maven 'M2_HOME'
         sh 'mvn clean deploy'
         }
         }
+        stage('MVN SONARQUBE')
+        {
+        steps{
+        sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=esprit'
+        }
+        }
+        stage('Building our image') { 
+
+            steps { 
+
+                script { 
+
+                    dockerImage = docker.build registry + ":$BUILD_NUMBER" 
+
+                }
+
+            } 
+
+        }
+
+        stage('Deploy our image') { 
+
+            steps { 
+
+                script { 
+
+                    docker.withRegistry( '', registryCredential ) { 
+
+                        dockerImage.push() 
+
+                    }
+
+                } 
+
+            }
+
+        } 
+
+        stage('Cleaning up') { 
+
+            steps { 
+
+                sh "docker rmi $registry:$BUILD_NUMBER" 
+
+            }
+
+        } 
        
        
       
